@@ -93,4 +93,4 @@
           allocatable: "{{ ocp_node_info.stdout | from_json | json_query('status.allocatable') }}"
           node_info: "{{ ocp_node_info.stdout | from_json | json_query('status.nodeInfo') }}"
           daemon_endpoints: "{{ ocp_node_info.stdout | from_json | json_query('status.daemonEndpoints') }}"
-  when: ( oc_installed.rc == 0 or kubeconfig.stat.exists == True )
+  when: ( oc_installed.rc == 0 and kubeconfig.stat.exists == True )
